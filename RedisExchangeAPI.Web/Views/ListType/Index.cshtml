@@ -1,0 +1,30 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form method="post" enctype="application/x-www-form-urlencoded" asp-controller="ListType" asp-action="Add">
+
+
+    <input type="text" name="name" />
+    <button type="submit">Kaydet</button>
+
+</form>
+<br />
+<a asp-controller="ListType" asp-action="DeleteItemFirstOrLast" asp-route-DeletePart="First">Baştan  Sil</a>
+<br />
+<a asp-controller="ListType" asp-action="DeleteItemFirstOrLast" asp-route-DeletePart="Last">Sonda Sil</a>
+<br />
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            
+              <a asp-controller="ListType" asp-action="Remove" asp-route-name="@item.ToString()" >X</a>   @item.ToString() 
+               
+        </li>
+    </ul>
+}

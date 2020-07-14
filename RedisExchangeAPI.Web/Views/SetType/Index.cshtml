@@ -1,0 +1,22 @@
+﻿@model  IEnumerable<string>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form method="post" enctype="application/x-www-form-urlencoded" asp-controller="SetType" asp-action="Add">
+
+    <input type="text" name="name"/>
+    <button type="submit">Kaydet</button>
+
+
+</form>
+<h2>Ürün Listesi</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <a asp-action="Remove" asp-route-name="@item.ToString()">Sil</a> @item.ToString()
+    }
+</ul>
